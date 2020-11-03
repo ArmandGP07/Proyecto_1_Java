@@ -2,7 +2,7 @@ public class Usuario {
     private String nombre;
     private int hp = 1000;
     private int mana = 200;
-    private Deck manoCartas;
+    private Deck deck;
 
     public Usuario(String nombre){
         this.nombre=nombre;
@@ -49,11 +49,11 @@ public class Usuario {
         this.mana = mana;
     }
 
-    public Deck getManoCartas() {
-        return manoCartas;
+    public Deck getDeck() {
+        return deck;
     }
 
-    public void setManoCartas(Deck manoCartas) {
-        this.manoCartas = manoCartas;
+    public void setDeck(Deck deck) {
+        this.deck = deck;
     }
 }

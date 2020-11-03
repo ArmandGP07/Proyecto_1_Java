@@ -1,20 +1,19 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        /*String json = "{\"name\": \"John\", \"age\":21}";
-        //JSONObject jsonObject = new JSONObject();
+        ArrayList<Cartas> cartas = Serialización.getListaCartas();
 
-        Cartas c1 = new Cartas("Slime",20);
-        ObjectMapper mapper = new ObjectMapper();
+        Usuario joel = new Usuario("Joel");
+        Usuario armando = new Usuario("Armando");
 
-        try {
-            mapper.writeValue(System.out, c1);
-        }catch (IOException ex){
-            System.out.println(ex.getMessage());
-        }*/
+        cartas.get(0).UsarCarta(joel,armando);
 
     }
 }
-
