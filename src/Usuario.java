@@ -1,11 +1,16 @@
+import java.io.IOException;
+
 public class Usuario {
     private String nombre;
     private int hp = 1000;
     private int mana = 200;
     private Deck deck;
+    private String ip;
 
-    public Usuario(String nombre){
+
+    public Usuario(String nombre) throws IOException {
         this.nombre=nombre;
+        this.deck= new Deck();
     }
 
     public void CrearPartida(){}
@@ -13,6 +18,7 @@ public class Usuario {
     public void UnirsePartida(){}
     public void SeleccionarCarta(){}
     public void UsarCarta(){}
+
     public void EsperarTurno(){}
 
     public String getIp() {
@@ -22,8 +28,6 @@ public class Usuario {
     public void setIp(String ip) {
         this.ip = ip;
     }
-
-    private String ip;
 
     public String getNombre() {
         return nombre;

@@ -13,7 +13,14 @@ public class Main {
         Usuario joel = new Usuario("Joel");
         Usuario armando = new Usuario("Armando");
 
-        cartas.get(0).UsarCarta(joel,armando);
+        //cartas.get(0).UsarCarta(joel, armando);
 
+        for (int i = 0; i < 16; i++) {
+            System.out.println(joel.getDeck().getNodo(i).getValor().getNombre());
+        }
+        System.out.println("");
+        for (int i = 0; i < 16; i++) {
+            System.out.println(armando.getDeck().getNodo(i).getValor().getNombre());
+        }
     }
 }
