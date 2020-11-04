@@ -1,8 +1,5 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -13,11 +10,14 @@ public class Usuario {
     private Deck deck;
     private String ip;
     private ServerClient serverPlayer;
+    private boolean partidaCreada = false;
 
     private Usuario enemigo = null;
 
     private Cartas cartaSeleccionada = null;
-    private int puerto = 50001;
+    private int puerto;
+
+    public Usuario(){}
 
     public Usuario(String nombre) throws IOException {
         this.nombre = nombre;
@@ -29,19 +29,42 @@ public class Usuario {
     public void CrearPartida(int puerto) {
         setPuerto(puerto);
         serverPlayer = new ServerClient(this, ip, puerto);
-
+        partidaCreada=true;
 
         Thread t1 = new Thread(serverPlayer);
         t1.start();
-
-
-
     }
 
 
 
-    public void UnirsePartida() {
+    public void UnirsePartida(int puerto) {
+        //Se guarda el valor del puerto especificado en un int
+        String enemigoIP = "127.0.0.1";
+        if (!partidaCreada) {
+            CrearPartida(puerto + 1);
+        }
+        //int puerto = Integer.parseInt(puerto.getText());
+        //String enemigoIP = puerto.getText();
 
+        try {
+            //Se crea un nuevo socket para enviar la información
+            Socket socket = new Socket(enemigoIP, puerto);
+
+            String usuarioEnvio = Serializacion.serializarUsuario(this);
+
+            //Se crea un flujo de datos de salida para enviar los datos recibidos
+            DataOutputStream informacionSalida = new DataOutputStream(socket.getOutputStream());
+            informacionSalida.writeUTF(usuarioEnvio);
+            System.out.println("Conectandose al servidor");
+            socket.close();
+
+        } catch (UnknownHostException unknownHostException) {
+            unknownHostException.printStackTrace();
+            System.out.println("UnknownHostException cliente");
+        } catch (IOException ioException) {
+            System.out.println("IOException cliente");
+
+        }
     }
 
 
@@ -58,7 +81,7 @@ public class Usuario {
             //Se crea un nuevo socket para enviar la información
             Socket socket = new Socket(enemigoIP, puerto);
 
-            String cartaUsada = Serializacion.serializar(cartaSeleccionada);
+            String cartaUsada = Serializacion.serializarCarta(cartaSeleccionada);
 
             //Se crea un flujo de datos de salida para enviar los datos recibidos
             DataOutputStream informacionSalida = new DataOutputStream(socket.getOutputStream());
