@@ -10,6 +10,7 @@ public class Hechizos extends Cartas {
         switch (getNombre()){
             case "Congelar":
             {
+
                 System.out.println("Congelé al enemigo");
                 break;
             }

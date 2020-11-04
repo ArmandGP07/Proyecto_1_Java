@@ -8,7 +8,7 @@ public class Deck {
 
     public Deck() throws IOException {
         int n = 16;
-        ArrayList<Cartas> cartas = Serialización.getListaCartas();
+        ArrayList<Cartas> cartas = Serializacion.getListaCartas();
 
         for(int i = 0; i<16;i++) {
             int numero = (int) (Math.random() * n) + 1;
@@ -58,9 +58,17 @@ public class Deck {
         if (!esVacia()) {
             Nodo aux = inicio;
             int i = 0;
+            System.out.println("Las cartas del deck son ");
 
-            while(aux != null && i<10){
-                System.out.print("Turno " + i + ". [ " + aux.getValor() + " ]" + "\n <->  ");
+            while(aux != null && i<tamagno){
+                System.out.print(String.format("[ %s ]", aux.getValor().getNombre()));
+
+                if (i!=tamagno-1) {
+                    System.out.print(" <-> ");
+                }
+                if((i+1)%2==0){
+                    System.out.println("");
+                }
                 aux = aux.getNext();
                 i++;
             }
@@ -82,4 +90,6 @@ public class Deck {
         }
         return aux;
     }
+
+
 }
