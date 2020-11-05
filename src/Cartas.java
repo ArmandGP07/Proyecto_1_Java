@@ -16,7 +16,7 @@ public class Cartas{
         //this.imagen= ImageIO.read(new File(imagen));
     }
 
-    public Cartas() {}
+    public Cartas(){}
 
     public void UsarCarta(Usuario usuario, Usuario enemigo){}
 

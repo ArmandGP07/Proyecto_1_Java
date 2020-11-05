@@ -7,10 +7,26 @@ public class Usuario {
     private String nombre;
     private int hp = 1000;
     private int mana = 200;
+    private ManoCartas manoCartas;
     private Deck deck;
     private String ip;
     private ServerClient serverPlayer;
     private boolean partidaCreada = false;
+
+    private final int maxHP = 1000;
+    private final int maxMana = 1000;
+    private int regenMana = 25;
+
+    private boolean poderSupremo=false;
+    private boolean maldicionActiva=false;
+    private boolean congelado=false;
+    private boolean envenenado=false;
+    private boolean quemado=false;
+    private boolean regeneracionHP=false;
+    private boolean robandoCartas=false;
+    private boolean escudoActivo=false;
+
+
 
     private Usuario enemigo = null;
 
@@ -22,6 +38,7 @@ public class Usuario {
     public Usuario(String nombre) throws IOException {
         this.nombre = nombre;
         this.deck = new Deck();
+        this.manoCartas = new ManoCartas(deck);
         this.ip = InetAddress.getLocalHost().getHostAddress();
 
     }
@@ -105,9 +122,12 @@ public class Usuario {
     }
 
     public void UsarCarta(int puertoEnemigo) {
-        System.out.printf("El usuario %s ha utilizado una carta de %s contra %s%n", nombre, cartaSeleccionada.getNombre(), enemigo.getNombre());
-        cartaSeleccionada.UsarCarta(this, enemigo);
-        enviarSocket(puertoEnemigo);
+        System.out.printf("El usuario %s ha utilizado una carta de %s contra %s", nombre, manoCartas.getNodo(puertoEnemigo).getValor().getNombre(), enemigo.getNombre());
+        //cartaSeleccionada.UsarCarta(this, enemigo);
+
+        manoCartas.usarCarta(puertoEnemigo, this, enemigo);
+
+        //enviarSocket(puertoEnemigo);
 
     }
 
@@ -178,4 +198,99 @@ public class Usuario {
         this.puerto = puerto;
     }
 
+    public ManoCartas getManoCartas() {
+        return manoCartas;
+    }
+
+    public void setManoCartas(ManoCartas manoCartas) {
+        this.manoCartas = manoCartas;
+    }
+
+    public boolean isPartidaCreada() {
+        return partidaCreada;
+    }
+
+    public void setPartidaCreada(boolean partidaCreada) {
+        this.partidaCreada = partidaCreada;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public int getRegenMana() {
+        return regenMana;
+    }
+
+    public void setRegenMana(int regenMana) {
+        this.regenMana = regenMana;
+    }
+
+    public boolean isPoderSupremo() {
+        return poderSupremo;
+    }
+
+    public void setPoderSupremo(boolean poderSupremo) {
+        this.poderSupremo = poderSupremo;
+    }
+
+    public boolean isMaldicionActiva() {
+        return maldicionActiva;
+    }
+
+    public void setMaldicionActiva(boolean maldicionActiva) {
+        this.maldicionActiva = maldicionActiva;
+    }
+
+    public boolean isCongelado() {
+        return congelado;
+    }
+
+    public void setCongelado(boolean congelado) {
+        this.congelado = congelado;
+    }
+
+    public boolean isEnvenenado() {
+        return envenenado;
+    }
+
+    public void setEnvenenado(boolean envenenado) {
+        this.envenenado = envenenado;
+    }
+
+    public boolean isQuemado() {
+        return quemado;
+    }
+
+    public void setQuemado(boolean quemado) {
+        this.quemado = quemado;
+    }
+
+    public boolean isRegeneracionHP() {
+        return regeneracionHP;
+    }
+
+    public void setRegeneracionHP(boolean regeneracionHP) {
+        this.regeneracionHP = regeneracionHP;
+    }
+
+    public boolean isRobandoCartas() {
+        return robandoCartas;
+    }
+
+    public void setRobandoCartas(boolean robandoCartas) {
+        this.robandoCartas = robandoCartas;
+    }
+
+    public boolean isEscudoActivo() {
+        return escudoActivo;
+    }
+
+    public void setEscudoActivo(boolean escudoActivo) {
+        this.escudoActivo = escudoActivo;
+    }
 }
