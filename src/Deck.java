@@ -7,89 +7,70 @@ public class Deck {
     private int tamagno;
 
     public Deck() throws IOException {
+
         int n = 16;
         ArrayList<Cartas> cartas = Serializacion.getListaCartas();
+        int totalCartas = cartas.size();
 
-        for(int i = 0; i<16;i++) {
-            int numero = (int) (Math.random() * n) + 1;
-            agregarAlFinal(cartas.get(numero));
+        for (int i = 0; i < n; i++) {
+            int numero = (int) (Math.random() * (totalCartas-1)) + 1;
+
+            Agregar(cartas.get(numero));
         }
     }
 
-    public int getTamagno() {
-        return tamagno;
+    public Cartas getCarta(){
+        Cartas aux = inicio.getValor();
+        EliminarElemento();
+        return aux;
     }
 
-    public boolean esVacia(){
+    public boolean esVacia() {
         return inicio == null;
     }
 
-
-    public void agregarAlFinal(Cartas valor) {
-
+    public void Agregar(Cartas carta){
         Nodo nuevo = new Nodo();
-        nuevo.setValor(valor);
+        nuevo.setValor(carta);
 
         if (esVacia()) {
             inicio = nuevo;
 
-        } else if(tamagno==1){
-            inicio.setNext(nuevo);
-            inicio.setPrev(nuevo);
+        } else {
             nuevo.setNext(inicio);
-            nuevo.setPrev(inicio);
+            inicio.setPrev(nuevo);
+            inicio = nuevo;
         }
-        else {
-            Nodo aux = inicio;
 
-            while (aux.getNext() != inicio) {
-                aux = aux.getNext();
-            }
-            aux.setNext(nuevo);
-            nuevo.setPrev(aux);
-            nuevo.setNext(inicio);
-            inicio.setPrev(nuevo);
-        }
         tamagno++;
     }
 
-    public void listar(){
-        // Verifica si la lista contiene elementoa.
+    public void EliminarElemento(){
+
+        if (!esVacia()){
+            inicio = inicio.getNext();
+            inicio.setPrev(null);
+        }
+    }
+
+    public void listar() {
+
         if (!esVacia()) {
             Nodo aux = inicio;
             int i = 0;
-            System.out.println("Las cartas del deck son ");
+            System.out.println("\nLas cartas del Deck son ");
 
-            while(aux != null && i<tamagno){
-                System.out.print(String.format("[ %s ]", aux.getValor().getNombre()));
+            while (aux != null && i < tamagno) {
+                System.out.printf("[ %s ]", aux.getValor().getNombre());
 
-                if (i!=tamagno-1) {
+                if (i != tamagno - 1) {
                     System.out.print(" <-> ");
                 }
-                if((i+1)%2==0){
-                    System.out.println("");
-                }
+
                 aux = aux.getNext();
                 i++;
             }
         }
     }
-
-    public Nodo getNodo(int posición){
-        Nodo aux = inicio;
-
-        int residuo = posición % getTamagno();
-        //System.out.println(residuo);
-
-        if (residuo == 0){
-            return aux;
-        } else {
-            for (int i = 0; i < residuo; i++) {
-                aux = aux.getNext();
-            }
-        }
-        return aux;
-    }
-
 
 }
