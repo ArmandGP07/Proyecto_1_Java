@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -12,6 +13,7 @@ public class Usuario {
     private String ip;
     private ServerClient serverPlayer;
     private boolean partidaCreada = false;
+    private int posicionCarataSeleccinada;
 
     private final int maxHP = 1000;
     private final int maxMana = 1000;
@@ -125,9 +127,8 @@ public class Usuario {
         System.out.printf("El usuario %s ha utilizado una carta de %s contra %s", nombre, manoCartas.getNodo(puertoEnemigo).getValor().getNombre(), enemigo.getNombre());
         //cartaSeleccionada.UsarCarta(this, enemigo);
 
-        manoCartas.usarCarta(puertoEnemigo, this, enemigo);
-
-        //enviarSocket(puertoEnemigo);
+        manoCartas.usarCarta(posicionCarataSeleccinada, this, enemigo);
+        enviarSocket(puertoEnemigo);
 
     }
 

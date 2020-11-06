@@ -11,14 +11,14 @@ public class Main {
         //ManoCartas manoCartas = new ManoCartas();
         //manoCartas.listar();
 
-        Usuario player1 = new Usuario("Joel");
-        Usuario player2 = new Usuario("Armando");
+        //Usuario player1 = new Usuario("Joel");
+        //Usuario player2 = new Usuario("Armando");
 
-        player1.setEnemigo(player2);
-        player2.setEnemigo(player1);
+        //player1.setEnemigo(player2);
+        //player2.setEnemigo(player1);
 
-        player1.getManoCartas().listar();
-        player1.getManoCartas().getNodo(1).getValor().UsarCarta(player1,player2);
+        //player1.getManoCartas().listar();
+        //player1.getManoCartas().getNodo(1).getValor().UsarCarta(player1,player2);
 
         //player1.UsarCarta(1);
 
