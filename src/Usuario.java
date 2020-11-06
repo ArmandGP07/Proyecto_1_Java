@@ -14,20 +14,22 @@ public class Usuario {
     private ServerClient serverPlayer;
     private boolean partidaCreada = false;
     private int posicionCarataSeleccinada;
+    private boolean conectado = false;
+    private boolean turno = false;
+    private boolean enemy = false;
 
     private final int maxHP = 1000;
     private final int maxMana = 1000;
     private int regenMana = 25;
 
-    private boolean poderSupremo=false;
-    private boolean maldicionActiva=false;
-    private boolean congelado=false;
-    private boolean envenenado=false;
-    private boolean quemado=false;
-    private boolean regeneracionHP=false;
-    private boolean robandoCartas=false;
-    private boolean escudoActivo=false;
-
+    private boolean poderSupremo = false;
+    private boolean maldicionActiva = false;
+    private boolean congelado = false;
+    private boolean envenenado = false;
+    private boolean quemado = false;
+    private boolean regeneracionHP = false;
+    private boolean robandoCartas = false;
+    private boolean escudoActivo = false;
 
 
     private Usuario enemigo = null;
@@ -35,28 +37,32 @@ public class Usuario {
     private Cartas cartaSeleccionada = null;
     private int puerto;
 
-    public Usuario(){}
+    public Usuario() {
+    }
 
-    public Usuario(String nombre) throws IOException {
+    public Usuario(String nombre) {
         this.nombre = nombre;
-        this.deck = new Deck();
-        this.manoCartas = new ManoCartas(deck);
-        this.ip = InetAddress.getLocalHost().getHostAddress();
+        try {
+            this.deck = new Deck();
+            this.manoCartas = new ManoCartas(deck);
+            this.ip = InetAddress.getLocalHost().getHostAddress();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void CrearPartida(int puerto) {
         setPuerto(puerto);
         serverPlayer = new ServerClient(this, ip, puerto);
-        partidaCreada=true;
+        partidaCreada = true;
 
         Thread t1 = new Thread(serverPlayer);
         t1.start();
     }
 
 
-
-    public void UnirsePartida(int puerto) {
+    public void UnirsePartida(String direccionIP, int puerto) {
         //Se guarda el valor del puerto especificado en un int
         String enemigoIP = "127.0.0.1";
         if (!partidaCreada) {
@@ -101,6 +107,7 @@ public class Usuario {
             Socket socket = new Socket(enemigoIP, puerto);
 
             String cartaUsada = Serializacion.serializarCarta(cartaSeleccionada);
+            cartaUsada = String.format("%d%s", posicionCarataSeleccinada, Serializacion.serializarCarta(cartaSeleccionada));
 
             //Se crea un flujo de datos de salida para enviar los datos recibidos
             DataOutputStream informacionSalida = new DataOutputStream(socket.getOutputStream());
@@ -128,8 +135,9 @@ public class Usuario {
         //cartaSeleccionada.UsarCarta(this, enemigo);
 
         manoCartas.usarCarta(posicionCarataSeleccinada, this, enemigo);
-        enviarSocket(puertoEnemigo);
-
+        if (turno || !enemy) {
+            enviarSocket(puertoEnemigo);
+        }
     }
 
     public void EsperarTurno() {
@@ -293,5 +301,37 @@ public class Usuario {
 
     public void setEscudoActivo(boolean escudoActivo) {
         this.escudoActivo = escudoActivo;
+    }
+
+    public int getPosicionCarataSeleccinada() {
+        return posicionCarataSeleccinada;
+    }
+
+    public void setPosicionCarataSeleccinada(int posicionCarataSeleccinada) {
+        this.posicionCarataSeleccinada = posicionCarataSeleccinada;
+    }
+
+    public boolean isConectado() {
+        return conectado;
+    }
+
+    public void setConectado(boolean conectado) {
+        this.conectado = conectado;
+    }
+
+    public boolean isTurno() {
+        return turno;
+    }
+
+    public void setTurno(boolean turno) {
+        this.turno = turno;
+    }
+
+    public boolean isEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(boolean enemy) {
+        this.enemy = enemy;
     }
 }

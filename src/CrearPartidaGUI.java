@@ -7,38 +7,38 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.Integer.parseInt;
+
 /**
  *
  * @author Armando
  */
-public class CrearUnirsePartidaGUI extends javax.swing.JFrame {
+public class CrearPartidaGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form CrearUnirsePartidaGUI
+     * Creates new form CrearPartidaGUI
      */
-    public CrearUnirsePartidaGUI(Usuario player) {
+    public CrearPartidaGUI(Usuario player) {
         initComponents();
         setVisible(true);
+
         crearPartidaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CrearPartidaGUI(player);
-                dispose();
+
+                if (!(puertoTextField.getText().equals("") || ipTextField.getText().equals(""))) {
+
+                    int puerto = parseInt(puertoTextField.getText());
+                    player.CrearPartida(puerto);
+
+                    new EsperandoJugadorGUI(player, puerto);
+                    dispose();
+                }
             }
         });
 
-        unirsePartidaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new UnirsePartidaGUI(player);
-                dispose();
-            }
-        });
 
     }
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,27 +49,22 @@ public class CrearUnirsePartidaGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        elejirJugarLabel = new javax.swing.JLabel();
+        ipLabel = new javax.swing.JLabel();
+        ipTextField = new javax.swing.JTextField();
+        puertoLabel = new javax.swing.JLabel();
+        puertoTextField = new javax.swing.JTextField();
         crearPartidaButton = new javax.swing.JButton();
-        unirsePartidaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        elejirJugarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        elejirJugarLabel.setText("ELIJE COMO JUGAR");
-        elejirJugarLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ipLabel.setText("IP: ");
 
-        crearPartidaButton.setText("CREAR UNA PARTIDA");
+        puertoLabel.setText("PUERTO:");
+
+        crearPartidaButton.setText("CREAR PARTIDA");
         crearPartidaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearPartidaButtonActionPerformed(evt);
-            }
-        });
-
-        unirsePartidaButton.setText("UNIRSE A PARTIDA");
-        unirsePartidaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unirsePartidaButtonActionPerformed(evt);
             }
         });
 
@@ -80,20 +75,30 @@ public class CrearUnirsePartidaGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(elejirJugarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(crearPartidaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(unirsePartidaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(puertoLabel)
+                        .addGap(15, 15, 15)
+                        .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ipLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crearPartidaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(elejirJugarLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ipLabel)
+                    .addComponent(ipTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(puertoLabel)
+                    .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(crearPartidaButton)
-                .addGap(15, 15, 15)
-                .addComponent(unirsePartidaButton)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -103,10 +108,6 @@ public class CrearUnirsePartidaGUI extends javax.swing.JFrame {
     private void crearPartidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPartidaButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_crearPartidaButtonActionPerformed
-
-    private void unirsePartidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unirsePartidaButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unirsePartidaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,27 +126,29 @@ public class CrearUnirsePartidaGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearUnirsePartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearPartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearUnirsePartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearPartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearUnirsePartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearPartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearUnirsePartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrearPartidaGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearUnirsePartidaGUI(new Usuario()).setVisible(true);
+                new CrearPartidaGUI(new Usuario()).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crearPartidaButton;
-    private javax.swing.JLabel elejirJugarLabel;
-    private javax.swing.JButton unirsePartidaButton;
+    private javax.swing.JLabel ipLabel;
+    private javax.swing.JTextField ipTextField;
+    private javax.swing.JLabel puertoLabel;
+    private javax.swing.JTextField puertoTextField;
     // End of variables declaration//GEN-END:variables
 }

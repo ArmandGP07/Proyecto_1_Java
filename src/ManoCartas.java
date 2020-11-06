@@ -127,5 +127,31 @@ public class ManoCartas {
         return aux;
     }
 
+    public void agregarPosicion(int posicion){
+        Nodo nuevo = new Nodo();
+        nuevo.setValor(deck.getCarta());
+
+        Nodo aux = inicio;
+        int i = 0;
+
+        if (posicion==0){
+            Nodo anterior = inicio.getPrev();
+            anterior.setNext(nuevo);
+            nuevo.setPrev(anterior);
+            nuevo.setNext(inicio);
+            inicio.setPrev(nuevo);
+            nuevo.setNext(inicio);
+            inicio = nuevo;
+        }
+        else {
+            while (i < posicion) {
+                aux = aux.getNext();
+
+                if (i == 0) {
+                    i++;
+                }
+            }
+        }
+    }
 
 }

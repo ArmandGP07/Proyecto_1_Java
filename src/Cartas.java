@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +7,7 @@ import java.io.IOException;
 public class Cartas{
     private String nombre;
     private int costoMana;
-    ///private BufferedImage imagen;
+    //var icon1 = new ImageIcon(String.format("src/resources/CartasImagenes/%s.png", nombre));
 
 
 

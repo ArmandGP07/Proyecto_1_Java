@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.java.gui.proyecto1gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static java.lang.Integer.parseInt;
 
 /**
  *
@@ -14,8 +18,20 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
     /**
      * Creates new form UnirsePartidaGUI
      */
-    public UnirsePartidaGUI() {
+    public UnirsePartidaGUI(Usuario player) {
         initComponents();
+        setVisible(true);
+        unirsePartidaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int puerto = parseInt(puertoTextLabel.getText());
+                String direccionIP = ipTextLabel.getText();
+
+                player.UnirsePartida(direccionIP,puerto);
+                new JuegoPrincipal(player);
+                dispose();
+            }
+        });
     }
 
     /**
@@ -32,6 +48,7 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
         ipTextLabel = new javax.swing.JTextField();
         puertoTextLabel = new javax.swing.JTextField();
         puertoLabel = new javax.swing.JLabel();
+        unirsePartidaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,6 +57,13 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
         ipLabel.setText("IP");
 
         puertoLabel.setText("PUERTO");
+
+        unirsePartidaButton.setText("UNIRSE A PARTIDA");
+        unirsePartidaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unirsePartidaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,7 +83,8 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
                                 .addComponent(ipTextLabel))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(puertoTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(puertoTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(unirsePartidaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,11 +100,17 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(puertoTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puertoLabel))
+                .addGap(15, 15, 15)
+                .addComponent(unirsePartidaButton)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void unirsePartidaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unirsePartidaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unirsePartidaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,7 +142,7 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UnirsePartidaGUI().setVisible(true);
+                new UnirsePartidaGUI(new Usuario()).setVisible(true);
             }
         });
     }
@@ -122,5 +153,6 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
     private javax.swing.JTextField ipTextLabel;
     private javax.swing.JLabel puertoLabel;
     private javax.swing.JTextField puertoTextLabel;
+    private javax.swing.JButton unirsePartidaButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,14 +23,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="elejirJugarLabel" max="32767" attributes="0"/>
-                  <Component id="crearPartidaButton" max="32767" attributes="0"/>
-                  <Component id="unirsePartidaButton" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="20" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="esperandoJugadorLabel1" max="32767" attributes="0"/>
+                  <Component id="esperandoJugadorLabel2" max="32767" attributes="0"/>
+                  <Component id="iniciarPartidaButton" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,38 +38,34 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="elejirJugarLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="esperandoJugadorLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="crearPartidaButton" min="-2" max="-2" attributes="0"/>
+              <Component id="esperandoJugadorLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="unirsePartidaButton" min="-2" max="-2" attributes="0"/>
+              <Component id="iniciarPartidaButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="elejirJugarLabel">
+    <Component class="javax.swing.JLabel" name="esperandoJugadorLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ESPERANDO A QUE EL OTRO"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="esperandoJugadorLabel2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="ELIJE COMO JUGAR"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="JUGADOR SE CONECTE"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="crearPartidaButton">
+    <Component class="javax.swing.JButton" name="iniciarPartidaButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CREAR UNA PARTIDA"/>
+        <Property name="text" type="java.lang.String" value="INICIAR PARTIDA"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearPartidaButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="unirsePartidaButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="UNIRSE A PARTIDA"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unirsePartidaButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iniciarPartidaButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

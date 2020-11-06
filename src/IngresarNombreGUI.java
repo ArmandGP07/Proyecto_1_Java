@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.java.gui.proyecto1gui;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
- *
  * @author Armando
  */
 public class IngresarNombreGUI extends javax.swing.JFrame {
@@ -16,6 +19,21 @@ public class IngresarNombreGUI extends javax.swing.JFrame {
      */
     public IngresarNombreGUI() {
         initComponents();
+        //JButton b = new JButton("Add form");
+        ingresarNombreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombre = ingresarNombreTextField.getText();
+
+                if (!(nombre.equals(""))) {
+                    Usuario player1 = new Usuario(nombre);
+
+                    new CrearUnirsePartidaGUI(player1);
+                    dispose();
+
+                }
+            }
+        });
     }
 
     /**
@@ -38,6 +56,7 @@ public class IngresarNombreGUI extends javax.swing.JFrame {
         ingresarNombreTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
+
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 ingresarNombreTextFieldInputMethodTextChanged(evt);
             }
@@ -53,25 +72,25 @@ public class IngresarNombreGUI extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ingresarNombreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ingresarNombreTextField)
-                    .addComponent(ingresarNombreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ingresarNombreLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ingresarNombreTextField)
+                                        .addComponent(ingresarNombreButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(ingresarNombreLabel)
-                .addGap(15, 15, 15)
-                .addComponent(ingresarNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(ingresarNombreButton)
-                .addContainerGap(20, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(ingresarNombreLabel)
+                                .addGap(15, 15, 15)
+                                .addComponent(ingresarNombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
+                                .addComponent(ingresarNombreButton)
+                                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,11 +98,15 @@ public class IngresarNombreGUI extends javax.swing.JFrame {
 
     private void ingresarNombreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarNombreButtonActionPerformed
         // TODO add your handling code here:
+
+
     }//GEN-LAST:event_ingresarNombreButtonActionPerformed
 
     private void ingresarNombreTextFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ingresarNombreTextFieldInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_ingresarNombreTextFieldInputMethodTextChanged
+
+
+    }/* GEN-LAST:event_ingresarNombreTextFieldInputMethodTextChanged */
 
     /**
      * @param args the command line arguments
@@ -92,7 +115,7 @@ public class IngresarNombreGUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
