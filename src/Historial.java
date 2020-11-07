@@ -103,13 +103,13 @@ public class Historial {
     /**
      * Gets nodo.
      *
-     * @param posición the posición
+     * @param posicion the posicion
      * @return the nodo
      */
-    public NodoString getNodo(int posición) {
+    public NodoString getNodo(int posicion) {
         NodoString aux = inicio;
-        if (posición>tamagno) {
-            for (int i = 0; i < posición; i++) {
+        if (posicion>tamagno) {
+            for (int i = 0; i < posicion; i++) {
                 aux = aux.getNext();
             }
             return aux;

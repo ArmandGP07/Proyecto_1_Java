@@ -17,8 +17,8 @@ public class CrearPartidaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CrearPartidaGUI
-     */
-    public CrearPartidaGUI(Usuario player) {
+     * @param player the player
+     */public CrearPartidaGUI(Usuario player) {
         initComponents();
         setVisible(true);
 

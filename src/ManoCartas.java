@@ -28,14 +28,14 @@ public class ManoCartas {
     /**
      * Usar carta.
      *
-     * @param posición the posición
+     * @param posicion the posicion
      * @param player   the player
      * @param enemigo  the enemigo
      */
-    public void usarCarta(int posición, Usuario player, Usuario enemigo){
-        Nodo aux = getNodo(posición);
+    public void usarCarta(int posicion, Usuario player, Usuario enemigo){
+        Nodo aux = getNodo(posicion);
         aux.getValor().UsarCarta(player, enemigo);
-        eliminar(posición);
+        eliminar(posicion);
         agregarAlFinal(deck.getCarta());
     }
 
@@ -158,13 +158,13 @@ public class ManoCartas {
     /**
      * Gets nodo.
      *
-     * @param posición the posición
+     * @param posicion the posicion
      * @return the nodo
      */
-    public Nodo getNodo(int posición) {
+    public Nodo getNodo(int posicion) {
         Nodo aux = inicio;
 
-        int residuo = posición % getTamagno();
+        int residuo = posicion % getTamagno();
         //System.out.println(residuo);
 
         if (residuo == 0) {

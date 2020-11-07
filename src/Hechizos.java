@@ -38,9 +38,9 @@ public class Hechizos extends Cartas {
                         usuario.setHp(usuario.getMaxHP());
                     }
 
-                    int curaciónRecibida = usuario.getHp()-actualHP;
+                    int curacionRecibida = usuario.getHp()-actualHP;
 
-                    System.out.println(String.format("Se curaron %d de HP", curaciónRecibida));
+                    System.out.println(String.format("Se curaron %d de HP", curacionRecibida));
                     break;
                 }
                 case "Poder Supremo": {

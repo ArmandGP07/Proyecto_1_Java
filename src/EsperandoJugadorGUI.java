@@ -15,6 +15,8 @@ public class EsperandoJugadorGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form EsperandoJugadorGUI
+     * @param player the player
+     * @param puerto the port
      */
     public EsperandoJugadorGUI(Usuario player, int puerto) {
         initComponents();

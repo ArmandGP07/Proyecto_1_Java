@@ -15,6 +15,7 @@ public class CrearUnirsePartidaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form CrearUnirsePartidaGUI
+     * @param player the player
      */
     public CrearUnirsePartidaGUI(Usuario player) {
         initComponents();

@@ -12,6 +12,7 @@ public class JuegoPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form JuegoPrincipal
+     * @param player the player
      */
     public JuegoPrincipal(Usuario player) {
         initComponents();
