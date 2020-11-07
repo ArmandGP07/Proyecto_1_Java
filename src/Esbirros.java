@@ -1,11 +1,24 @@
+/**
+ * The type Esbirros.
+ */
 public class Esbirros extends Cartas {
     private int ataque;
 
+    /**
+     * Instantiates a new Esbirros.
+     *
+     * @param nombre    the nombre
+     * @param costoMana the costo mana
+     * @param ataque    the ataque
+     */
     public Esbirros(String nombre, int costoMana, int ataque) {
         super(nombre, costoMana);
         this.ataque = ataque;
     }
 
+    /**
+     * Instantiates a new Esbirros.
+     */
     public Esbirros() {
     }
 
@@ -70,10 +83,20 @@ public class Esbirros extends Cartas {
     }
 
 
+    /**
+     * Gets ataque.
+     *
+     * @return the ataque
+     */
     public int getAtaque() {
         return ataque;
     }
 
+    /**
+     * Sets ataque.
+     *
+     * @param ataque the ataque
+     */
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }

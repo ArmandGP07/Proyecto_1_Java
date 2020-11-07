@@ -1,15 +1,24 @@
+/**
+ * The type Historial.
+ */
 public class Historial {
 
     private NodoString inicio;
     private int tamagno;
     private NodoString auxNodoString;
 
+    /**
+     * Instantiates a new Historial.
+     */
     public Historial() {
         inicio = null;
         auxNodoString = inicio;
 
     }
 
+    /**
+     * Siguiente.
+     */
     public void siguiente() {
         if (auxNodoString.getNext() == null) {
         } else {
@@ -18,6 +27,9 @@ public class Historial {
         }
     }
 
+    /**
+     * Anterior.
+     */
     public void anterior(){
 
         if (auxNodoString.getPrev() == null) {
@@ -26,15 +38,31 @@ public class Historial {
             System.out.println(auxNodoString.getValor());
         }
     }
+
+    /**
+     * Gets tamagno.
+     *
+     * @return the tamagno
+     */
     public int getTamagno() {
         return tamagno;
     }
 
+    /**
+     * Es vacia boolean.
+     *
+     * @return the boolean
+     */
     public boolean esVacia() {
         return inicio == null;
     }
 
 
+    /**
+     * Agregar al final.
+     *
+     * @param valor the valor
+     */
     public void agregarAlFinal(String valor) {
 
         NodoString nuevo = new NodoString();
@@ -55,6 +83,9 @@ public class Historial {
         tamagno++;
     }
 
+    /**
+     * Listar.
+     */
     public void listar() {
         // Verifica si la lista contiene elementoa.
         if (!esVacia()) {
@@ -69,6 +100,12 @@ public class Historial {
         }
     }
 
+    /**
+     * Gets nodo.
+     *
+     * @param posición the posición
+     * @return the nodo
+     */
     public NodoString getNodo(int posición) {
         NodoString aux = inicio;
         if (posición>tamagno) {

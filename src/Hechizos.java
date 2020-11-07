@@ -1,8 +1,20 @@
+/**
+ * The type Hechizos.
+ */
 public class Hechizos extends Cartas {
+    /**
+     * Instantiates a new Hechizos.
+     *
+     * @param nombre    the nombre
+     * @param costoMana the costo mana
+     */
     public Hechizos(String nombre, int costoMana) {
         super(nombre, costoMana);
     }
 
+    /**
+     * Instantiates a new Hechizos.
+     */
     public Hechizos() {
     }
 

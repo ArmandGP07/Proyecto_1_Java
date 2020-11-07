@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The type Mano cartas.
+ */
 public class ManoCartas {
 
     private Nodo inicio;
@@ -8,6 +11,12 @@ public class ManoCartas {
 
     private Deck deck;
 
+    /**
+     * Instantiates a new Mano cartas.
+     *
+     * @param deck the deck
+     * @throws IOException the io exception
+     */
     public ManoCartas(Deck deck) throws IOException {
         int n = 4;
 
@@ -16,6 +25,13 @@ public class ManoCartas {
         }
     }
 
+    /**
+     * Usar carta.
+     *
+     * @param posición the posición
+     * @param player   the player
+     * @param enemigo  the enemigo
+     */
     public void usarCarta(int posición, Usuario player, Usuario enemigo){
         Nodo aux = getNodo(posición);
         aux.getValor().UsarCarta(player, enemigo);
@@ -23,15 +39,30 @@ public class ManoCartas {
         agregarAlFinal(deck.getCarta());
     }
 
+    /**
+     * Gets tamagno.
+     *
+     * @return the tamagno
+     */
     public int getTamagno() {
         return tamagno;
     }
 
+    /**
+     * Es vacia boolean.
+     *
+     * @return the boolean
+     */
     public boolean esVacia() {
         return inicio == null;
     }
 
 
+    /**
+     * Agregar al final.
+     *
+     * @param valor the valor
+     */
     public void agregarAlFinal(Cartas valor) {
 
         Nodo nuevo = new Nodo();
@@ -59,6 +90,9 @@ public class ManoCartas {
         tamagno++;
     }
 
+    /**
+     * Listar.
+     */
     public void listar() {
         // Verifica si la lista contiene elementoa.
         if (!esVacia()) {
@@ -80,6 +114,11 @@ public class ManoCartas {
         }
     }
 
+    /**
+     * Eliminar nodo.
+     *
+     * @param carta the carta
+     */
     public void eliminarNodo(Cartas carta) {
         Nodo aux = inicio;
         boolean indicador = true;
@@ -101,6 +140,11 @@ public class ManoCartas {
         }
     }
 
+    /**
+     * Eliminar.
+     *
+     * @param n the n
+     */
     public void eliminar(int n) {
         Nodo aux = getNodo(n - 1);
         Nodo nuevoSiguiente = aux.getNext().getNext();
@@ -111,6 +155,12 @@ public class ManoCartas {
         tamagno--;
     }
 
+    /**
+     * Gets nodo.
+     *
+     * @param posición the posición
+     * @return the nodo
+     */
     public Nodo getNodo(int posición) {
         Nodo aux = inicio;
 
@@ -127,6 +177,11 @@ public class ManoCartas {
         return aux;
     }
 
+    /**
+     * Agregar posicion.
+     *
+     * @param posicion the posicion
+     */
     public void agregarPosicion(int posicion){
         Nodo nuevo = new Nodo();
         nuevo.setValor(deck.getCarta());

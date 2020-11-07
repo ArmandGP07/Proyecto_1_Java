@@ -9,8 +9,14 @@ import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * The type Icon dn d.
+ */
 public class IconDnD extends JFrame {
 
+    /**
+     * Instantiates a new Icon dn d.
+     */
     public IconDnD() {
 
         initUI();
@@ -89,6 +95,11 @@ public class IconDnD extends JFrame {
         pack();
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {

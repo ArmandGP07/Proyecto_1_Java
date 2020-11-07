@@ -3,8 +3,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 
+/**
+ * The type Generador string json.
+ */
 public class GeneradorStringJSON {
+    /**
+     * The Cartas totales.
+     */
     ArrayList<Cartas> cartasTotales = new ArrayList<Cartas>();
+
+    /**
+     * Instantiates a new Generador string json.
+     *
+     * @throws JsonProcessingException the json processing exception
+     */
     public GeneradorStringJSON() throws JsonProcessingException {
 
         cartasTotales.add(new Esbirros("Slime", 30, 50));

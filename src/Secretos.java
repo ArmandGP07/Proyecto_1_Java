@@ -1,9 +1,21 @@
+/**
+ * The type Secretos.
+ */
 public class Secretos extends Cartas{
 
+    /**
+     * Instantiates a new Secretos.
+     *
+     * @param nombre    the nombre
+     * @param costoMana the costo mana
+     */
     public Secretos(String nombre, int costoMana){
         super(nombre, costoMana);
     }
 
+    /**
+     * Instantiates a new Secretos.
+     */
     public Secretos(){}
 
     @Override

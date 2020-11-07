@@ -5,6 +5,9 @@ import java.net.Socket;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * The type Server client.
+ */
 public class ServerClient implements Runnable {
     private int puerto;
     private String ip;
@@ -12,6 +15,13 @@ public class ServerClient implements Runnable {
     private int puertoEnemigo;
     private int usuariosRegistrados=0;
 
+    /**
+     * Instantiates a new Server client.
+     *
+     * @param user   the user
+     * @param ip     the ip
+     * @param puerto the puerto
+     */
     public ServerClient(Usuario user, String ip, int puerto){
         this.puerto= puerto;
         this.user=user;
@@ -67,26 +77,56 @@ public class ServerClient implements Runnable {
         }
     }
 
+    /**
+     * Gets puerto.
+     *
+     * @return the puerto
+     */
     public int getPuerto() {
         return puerto;
     }
 
+    /**
+     * Sets puerto.
+     *
+     * @param puerto the puerto
+     */
     public void setPuerto(int puerto) {
         this.puerto = puerto;
     }
 
+    /**
+     * Gets ip.
+     *
+     * @return the ip
+     */
     public String getIp() {
         return ip;
     }
 
+    /**
+     * Sets ip.
+     *
+     * @param ip the ip
+     */
     public void setIp(String ip) {
         this.ip = ip;
     }
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public Usuario getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(Usuario user) {
         this.user = user;
     }

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
 
 /**
+ * The type Unirse partida gui.
  *
  * @author Armando
  */
@@ -17,6 +18,8 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form UnirsePartidaGUI
+     *
+     * @param player the player
      */
     public UnirsePartidaGUI(Usuario player) {
         initComponents();
@@ -113,6 +116,8 @@ public class UnirsePartidaGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_unirsePartidaButtonActionPerformed
 
     /**
+     * Main.
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {

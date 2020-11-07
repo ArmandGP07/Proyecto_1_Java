@@ -1,11 +1,19 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The type Deck.
+ */
 public class Deck {
 
     private Nodo inicio;
     private int tamagno;
 
+    /**
+     * Instantiates a new Deck.
+     *
+     * @throws IOException the io exception
+     */
     public Deck() throws IOException {
 
         int n = 16;
@@ -19,16 +27,31 @@ public class Deck {
         }
     }
 
+    /**
+     * Get carta cartas.
+     *
+     * @return the cartas
+     */
     public Cartas getCarta(){
         Cartas aux = inicio.getValor();
         EliminarElemento();
         return aux;
     }
 
+    /**
+     * Es vacia boolean.
+     *
+     * @return the boolean
+     */
     public boolean esVacia() {
         return inicio == null;
     }
 
+    /**
+     * Agregar.
+     *
+     * @param carta the carta
+     */
     public void Agregar(Cartas carta){
         Nodo nuevo = new Nodo();
         nuevo.setValor(carta);
@@ -45,6 +68,9 @@ public class Deck {
         tamagno++;
     }
 
+    /**
+     * Eliminar elemento.
+     */
     public void EliminarElemento(){
 
         if (!esVacia()){
@@ -53,6 +79,9 @@ public class Deck {
         }
     }
 
+    /**
+     * Listar.
+     */
     public void listar() {
 
         if (!esVacia()) {
