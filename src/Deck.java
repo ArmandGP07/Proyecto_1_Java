@@ -1,4 +1,4 @@
-import org.junit.Ignore;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,11 +19,9 @@ public class Deck {
      *
      * @throws IOException the io exception
      */
-<<<<<<< HEAD
+
     public Deck(int number) throws IOException {
-=======
-    public Deck() throws IOException {
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
 
         int n = 16;
         ArrayList<Cartas> cartas = Serializacion.getListaCartas();
@@ -36,7 +34,6 @@ public class Deck {
         }
     }
 
-<<<<<<< HEAD
 
     public Deck(ArrayList<Integer> listaNumeros) throws IOException {
 
@@ -48,8 +45,6 @@ public class Deck {
 
     }
 
-=======
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
     /**
      * Get carta cartas.
      *

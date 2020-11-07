@@ -3,10 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-<<<<<<< HEAD
-=======
-package com.java.gui.proyecto1gui;
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
 
 /**
  *

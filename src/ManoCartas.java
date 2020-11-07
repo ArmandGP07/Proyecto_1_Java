@@ -37,11 +37,9 @@ public class ManoCartas {
         }
     }
 
-<<<<<<< HEAD
+
     public ManoCartas(){}
 
-=======
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
     /**
      * Usar carta.
      *
@@ -53,11 +51,9 @@ public class ManoCartas {
         Nodo aux = getNodo(posicion);
         aux.getValor().UsarCarta(player, enemigo);
         eliminar(posicion);
-<<<<<<< HEAD
+
         agregarPosicion(posicion);
-=======
-        agregarAlFinal(deck.getCarta());
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
     }
 
     /**
@@ -185,13 +181,12 @@ public class ManoCartas {
     public Nodo getNodo(int posicion) {
         Nodo aux = inicio;
 
-<<<<<<< HEAD
+
         if (posicion==0){
             return aux;
         }
 
-=======
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
         int residuo = posicion % getTamagno();
         //System.out.println(residuo);
 
@@ -212,18 +207,16 @@ public class ManoCartas {
      */
     public void agregarPosicion(int posicion){
         Nodo nuevo = new Nodo();
-<<<<<<< HEAD
+
         Cartas carta = deck.getCarta();
         nuevo.setValor(carta);
-=======
-        nuevo.setValor(deck.getCarta());
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
 
         Nodo aux = inicio;
         int i = 0;
 
         if (posicion==0){
-<<<<<<< HEAD
+
 
             Nodo finale = inicio.getPrev();
 
@@ -259,25 +252,7 @@ public class ManoCartas {
         else{
             agregarAlFinal(nuevo.getValor());
         }
-=======
-            Nodo anterior = inicio.getPrev();
-            anterior.setNext(nuevo);
-            nuevo.setPrev(anterior);
-            nuevo.setNext(inicio);
-            inicio.setPrev(nuevo);
-            nuevo.setNext(inicio);
-            inicio = nuevo;
-        }
-        else {
-            while (i < posicion) {
-                aux = aux.getNext();
 
-                if (i == 0) {
-                    i++;
-                }
-            }
-        }
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
     }
 
 }

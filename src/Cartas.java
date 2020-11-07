@@ -10,12 +10,10 @@ import java.io.IOException;
 public class Cartas{
     private String nombre;
     private int costoMana;
-<<<<<<< HEAD
+
     private String pathImage;
 
-=======
-    //var icon1 = new ImageIcon(String.format("src/resources/CartasImagenes/%s.png", nombre));
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
 
     public String getPathImage() {
         return pathImage;

@@ -19,19 +19,13 @@ public class Usuario {
     private String enemigoIP;
     private ServerClient serverPlayer;
     private boolean partidaCreada = false;
-<<<<<<< HEAD
+
     private int posicionCartaSeleccinada;
     private int posCartaEnemigoSeleccionada;
     private boolean conectado = false;
     private boolean turno = false;
     private boolean enemy = false;
     private boolean cliente = false;
-=======
-    private int posicionCarataSeleccinada;
-    private boolean conectado = false;
-    private boolean turno = false;
-    private boolean enemy = false;
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
     private final int maxHP = 1000;
     private final int maxMana = 1000;
@@ -60,13 +54,7 @@ public class Usuario {
         deck = null;
         manoCartas = null;
 
-<<<<<<< HEAD
-=======
-    /**
-     * Instantiates a new Usuario.
-     */
-    public Usuario() {
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
     }
 
     /**
@@ -77,19 +65,11 @@ public class Usuario {
     public Usuario(String nombre) {
         this.nombre = nombre;
         try {
-<<<<<<< HEAD
+
             this.deck = null;
             this.manoCartas = null;
             this.ip = InetAddress.getLocalHost().getHostAddress();
             obtenerNumerosCartas();
-=======
-            this.deck = new Deck();
-            this.manoCartas = new ManoCartas(deck);
-            this.ip = InetAddress.getLocalHost().getHostAddress();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
 
         } catch (IOException e) {
@@ -103,7 +83,7 @@ public class Usuario {
         manoCartas.setDeck(deck);
     }
 
-<<<<<<< HEAD
+
     public void obtenerNumerosCartas() throws IOException {
         ArrayList<Cartas> cartas = Serializacion.getListaCartas();
         int n = 16;
@@ -118,8 +98,6 @@ public class Usuario {
         }
     }
 
-=======
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
     /**
      * Crear partida.
      *
@@ -129,13 +107,10 @@ public class Usuario {
         setPuerto(puerto);
         serverPlayer = new ServerClient(this, ip, puerto);
         partidaCreada = true;
-<<<<<<< HEAD
 
         if (!cliente){
             turno=true;
         }
-=======
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
         Thread t1 = new Thread(serverPlayer);
         t1.start();
@@ -202,11 +177,9 @@ public class Usuario {
             Socket socket = new Socket(enemigoIP, puerto);
 
             String cartaUsada = Serializacion.serializarCarta(cartaSeleccionada);
-<<<<<<< HEAD
+
             //cartaUsada = String.format("%d%s", posicionCarataSeleccinada, Serializacion.serializarCarta(cartaSeleccionada));
-=======
-            cartaUsada = String.format("%d%s", posicionCarataSeleccinada, Serializacion.serializarCarta(cartaSeleccionada));
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
 
             //Se crea un flujo de datos de salida para enviar los datos recibidos
             DataOutputStream informacionSalida = new DataOutputStream(socket.getOutputStream());
@@ -232,16 +205,14 @@ public class Usuario {
     /**
      * Seleccionar carta.
      */
-<<<<<<< HEAD
+
     public void UsarCarta() {
         if (turno) {
             manoCartas.usarCarta(posicionCartaSeleccinada, this, enemigo);
             turno = false;
             enemigo.setTurno(true);
         }
-=======
-    public void SeleccionarCarta() {
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
     }
 
     /**
@@ -254,17 +225,13 @@ public class Usuario {
             System.out.printf("El usuario %s ha utilizado una carta de %s contra %s", nombre, manoCartas.getNodo(puertoEnemigo).getValor().getNombre(), enemigo.getNombre());
             //cartaSeleccionada.UsarCarta(this, enemigo);
 
-<<<<<<< HEAD
+
             manoCartas.usarCarta(posicionCartaSeleccinada, this, enemigo);
             if (turno || !enemy) {
                 enviarSocket(puertoEnemigo);
             }
 
-=======
-        manoCartas.usarCarta(posicionCarataSeleccinada, this, enemigo);
-        if (turno || !enemy) {
-            enviarSocket(puertoEnemigo);
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
         }
     }
 
@@ -639,29 +606,21 @@ public class Usuario {
      *
      * @return the posicion carata seleccinada
      */
-<<<<<<< HEAD
+
     public int getPosicionCartaSeleccinada() {
         return posicionCartaSeleccinada;
-=======
-    public int getPosicionCarataSeleccinada() {
-        return posicionCarataSeleccinada;
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
     }
 
     /**
      * Sets posicion carata seleccinada.
      *
-<<<<<<< HEAD
+
      * @param posicionCartaSeleccinada the posicion carata seleccinada
      */
     public void setPosicionCartaSeleccinada(int posicionCartaSeleccinada) {
         this.posicionCartaSeleccinada = posicionCartaSeleccinada;
-=======
-     * @param posicionCarataSeleccinada the posicion carata seleccinada
-     */
-    public void setPosicionCarataSeleccinada(int posicionCarataSeleccinada) {
-        this.posicionCarataSeleccinada = posicionCarataSeleccinada;
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
     }
 
     /**
@@ -717,7 +676,6 @@ public class Usuario {
     public void setEnemy(boolean enemy) {
         this.enemy = enemy;
     }
-<<<<<<< HEAD
 
     public ArrayList<Integer> getNumeroDeCartas() {
         return numeroDeCartas;
@@ -750,6 +708,5 @@ public class Usuario {
     public void setPuertoEnemigo(int puertoEnemigo) {
         this.puertoEnemigo = puertoEnemigo;
     }
-=======
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
 }

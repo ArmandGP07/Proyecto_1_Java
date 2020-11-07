@@ -6,7 +6,7 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-<<<<<<< HEAD
+
 
 
         //Deck deck = new Deck(7);
@@ -39,10 +39,6 @@ public class Main {
         //Usuario p2 = Serializacion.deserializarUsuario(usuarioSerializado);
         //System.out.println(p2.getNombre());
 
-=======
-        IngresarNombreGUI m = new IngresarNombreGUI();
 
-
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
     }
 }

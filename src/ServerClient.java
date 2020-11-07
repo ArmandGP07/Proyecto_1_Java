@@ -51,14 +51,11 @@ public class ServerClient implements Runnable {
                         //String usuarioSerializado = info.substring(1);
                         Usuario usuarioEnemigo = Serializacion.deserializarUsuario(info);
                         usuarioEnemigo.setEnemy(true);
-<<<<<<< HEAD
+
                         usuarioEnemigo.obtencionDeCartas();
 
                         //System.out.println(info);
-=======
 
-                        System.out.println(info);
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
                         user.UnirsePartida(usuarioEnemigo.getIp(),usuarioEnemigo.getPuerto());
 
                         user.setEnemigo(usuarioEnemigo);
@@ -70,21 +67,13 @@ public class ServerClient implements Runnable {
                     }else if (info.equals("0")||info.equals("1")||info.equals("2")||info.equals("3")){
                         //System.out.println(info);
 
-<<<<<<< HEAD
+
                         int valorCarta = parseInt(info);
                         user.getEnemigo().setPosicionCartaSeleccinada(valorCarta);
                         user.getEnemigo().UsarCarta();
                         user.getEnemigo().setTurno(false);
                         user.setTurno(true);
-=======
-                        int valorCarta = parseInt(info.substring(0,0));
-                        user.getEnemigo().setPosicionCarataSeleccinada(valorCarta);
-                        String cartaJson = info.substring(1);
-                        Cartas cartaUsada = Serializacion.deserializarCartas(cartaJson);
-                        user.getEnemigo().UsarCarta(50001);
-                        cartaUsada.UsarCarta(user.getEnemigo(), user);
-                        //System.out.printf("El usuario %s ha recibido una carta de %s de parte de %s%n", user.getNombre(), user.getCartaSeleccionada().getNombre(), user.getEnemigo().getNombre());
->>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
                     }
 
                     socket.close();
