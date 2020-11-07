@@ -7,9 +7,32 @@ public class Historial {
     private int tamagno;
     private NodoString auxNodoString;
 
+<<<<<<< HEAD
+    public NodoString getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(NodoString inicio) {
+        this.inicio = inicio;
+    }
+
+    public void setTamagno(int tamagno) {
+        this.tamagno = tamagno;
+    }
+
+    public NodoString getAuxNodoString() {
+        return auxNodoString;
+    }
+
+    public void setAuxNodoString(NodoString auxNodoString) {
+        this.auxNodoString = auxNodoString;
+    }
+
+=======
     /**
      * Instantiates a new Historial.
      */
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     public Historial() {
         inicio = null;
         auxNodoString = inicio;
@@ -79,6 +102,7 @@ public class Historial {
             }
             aux.setNext(nuevo);
             nuevo.setPrev(aux);
+
         }
         tamagno++;
     }

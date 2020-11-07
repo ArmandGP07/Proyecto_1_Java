@@ -10,7 +10,20 @@ import java.io.IOException;
 public class Cartas{
     private String nombre;
     private int costoMana;
+<<<<<<< HEAD
+    private String pathImage;
+
+=======
     //var icon1 = new ImageIcon(String.format("src/resources/CartasImagenes/%s.png", nombre));
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    public void setPathImage(String icon) {
+        this.pathImage = icon;
+    }
 
 
     /**
@@ -20,9 +33,9 @@ public class Cartas{
      * @param costoMana the costo mana
      */
     public Cartas(String nombre, int costoMana){ //throws IOException {
-        this.nombre=nombre;
-        this.costoMana=costoMana;
-        //this.imagen= ImageIO.read(new File(imagen));
+        this.nombre =nombre;
+        this.costoMana =costoMana;
+         this.pathImage = new String(String.format("src/resources/Cartas/%s.png", nombre));
     }
 
     /**

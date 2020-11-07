@@ -1,3 +1,5 @@
+import org.junit.Ignore;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -7,14 +9,21 @@ import java.util.ArrayList;
 public class Deck {
 
     private Nodo inicio;
-    private int tamagno;
+    private int tamagno=0;
+
+    
+    public Deck(){}
 
     /**
      * Instantiates a new Deck.
      *
      * @throws IOException the io exception
      */
+<<<<<<< HEAD
+    public Deck(int number) throws IOException {
+=======
     public Deck() throws IOException {
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
         int n = 16;
         ArrayList<Cartas> cartas = Serializacion.getListaCartas();
@@ -27,6 +36,20 @@ public class Deck {
         }
     }
 
+<<<<<<< HEAD
+
+    public Deck(ArrayList<Integer> listaNumeros) throws IOException {
+
+        ArrayList<Cartas> cartas = Serializacion.getListaCartas();
+
+        for (int i=0; i<listaNumeros.size(); i++) {
+            Agregar(cartas.get(listaNumeros.get(i)));
+        }
+
+    }
+
+=======
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     /**
      * Get carta cartas.
      *

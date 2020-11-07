@@ -31,7 +31,7 @@ public class Esbirros extends Cartas {
             } else {
                 enemigo.setHp(enemigo.getHp() - ataque);
             }
-            System.out.printf("El hp de %s es %d\n", enemigo.getNombre(), enemigo.getHp());
+            System.out.printf("\nEl hp de %s es %d\n", enemigo.getNombre(), enemigo.getHp());
 
             switch (getNombre()) {
 

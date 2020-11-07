@@ -3,23 +3,35 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 /**
  * The type Usuario.
  */
 public class Usuario {
     private String nombre;
+    private ArrayList<Integer> numeroDeCartas = new ArrayList<>();
     private int hp = 1000;
-    private int mana = 200;
-    private ManoCartas manoCartas;
+    private int mana = 5000;
     private Deck deck;
+    private ManoCartas manoCartas;
     private String ip;
+    private String enemigoIP;
     private ServerClient serverPlayer;
     private boolean partidaCreada = false;
+<<<<<<< HEAD
+    private int posicionCartaSeleccinada;
+    private int posCartaEnemigoSeleccionada;
+    private boolean conectado = false;
+    private boolean turno = false;
+    private boolean enemy = false;
+    private boolean cliente = false;
+=======
     private int posicionCarataSeleccinada;
     private boolean conectado = false;
     private boolean turno = false;
     private boolean enemy = false;
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
     private final int maxHP = 1000;
     private final int maxMana = 1000;
@@ -39,11 +51,22 @@ public class Usuario {
 
     private Cartas cartaSeleccionada = null;
     private int puerto;
+    private int puertoEnemigo;
 
     /**
      * Instantiates a new Usuario.
      */
     public Usuario() {
+        deck = null;
+        manoCartas = null;
+
+<<<<<<< HEAD
+=======
+    /**
+     * Instantiates a new Usuario.
+     */
+    public Usuario() {
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     }
 
     /**
@@ -54,15 +77,49 @@ public class Usuario {
     public Usuario(String nombre) {
         this.nombre = nombre;
         try {
+<<<<<<< HEAD
+            this.deck = null;
+            this.manoCartas = null;
+            this.ip = InetAddress.getLocalHost().getHostAddress();
+            obtenerNumerosCartas();
+=======
             this.deck = new Deck();
             this.manoCartas = new ManoCartas(deck);
             this.ip = InetAddress.getLocalHost().getHostAddress();
         } catch (IOException e) {
             e.printStackTrace();
         }
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
+    public void obtencionDeCartas() throws IOException {
+        deck = new Deck(numeroDeCartas);
+        manoCartas = new ManoCartas(deck);
+        manoCartas.setDeck(deck);
+    }
 
+<<<<<<< HEAD
+    public void obtenerNumerosCartas() throws IOException {
+        ArrayList<Cartas> cartas = Serializacion.getListaCartas();
+        int n = 16;
+        int totalCartas = cartas.size();
+
+        for (int i = 0; i < n; i++) {
+            int numero = (int) (Math.random() * (totalCartas - 1)) + 1;
+
+            numeroDeCartas.add(numero);
+            //Agregar(cartas.get(numero));
+
+        }
+    }
+
+=======
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     /**
      * Crear partida.
      *
@@ -72,6 +129,13 @@ public class Usuario {
         setPuerto(puerto);
         serverPlayer = new ServerClient(this, ip, puerto);
         partidaCreada = true;
+<<<<<<< HEAD
+
+        if (!cliente){
+            turno=true;
+        }
+=======
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
         Thread t1 = new Thread(serverPlayer);
         t1.start();
@@ -86,7 +150,11 @@ public class Usuario {
      */
     public void UnirsePartida(String direccionIP, int puerto) {
         //Se guarda el valor del puerto especificado en un int
-        String enemigoIP = "127.0.0.1";
+        enemigoIP = direccionIP;
+        puertoEnemigo = puerto;
+
+        cliente=true;
+
         if (!partidaCreada) {
             CrearPartida(puerto + 1);
         }
@@ -105,6 +173,10 @@ public class Usuario {
             System.out.println("Conectandose al servidor");
             socket.close();
 
+            if (!conectado) {
+                this.obtencionDeCartas();
+                setConectado(true);
+            }
         } catch (UnknownHostException unknownHostException) {
             unknownHostException.printStackTrace();
             System.out.println("UnknownHostException cliente");
@@ -124,21 +196,21 @@ public class Usuario {
         //Se guarda el valor del puerto especificado en un int
 
 
-        String enemigoIP = "127.0.0.1";
-
-        //int puerto = Integer.parseInt(puerto.getText());
-        //String enemigoIP = puerto.getText();
 
         try {
             //Se crea un nuevo socket para enviar la información
             Socket socket = new Socket(enemigoIP, puerto);
 
             String cartaUsada = Serializacion.serializarCarta(cartaSeleccionada);
+<<<<<<< HEAD
+            //cartaUsada = String.format("%d%s", posicionCarataSeleccinada, Serializacion.serializarCarta(cartaSeleccionada));
+=======
             cartaUsada = String.format("%d%s", posicionCarataSeleccinada, Serializacion.serializarCarta(cartaSeleccionada));
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
 
             //Se crea un flujo de datos de salida para enviar los datos recibidos
             DataOutputStream informacionSalida = new DataOutputStream(socket.getOutputStream());
-            informacionSalida.writeUTF(cartaUsada);
+            informacionSalida.writeUTF(String.format("%d", posicionCartaSeleccinada));
             socket.close();
 
         } catch (UnknownHostException unknownHostException) {
@@ -160,7 +232,16 @@ public class Usuario {
     /**
      * Seleccionar carta.
      */
+<<<<<<< HEAD
+    public void UsarCarta() {
+        if (turno) {
+            manoCartas.usarCarta(posicionCartaSeleccinada, this, enemigo);
+            turno = false;
+            enemigo.setTurno(true);
+        }
+=======
     public void SeleccionarCarta() {
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     }
 
     /**
@@ -169,12 +250,21 @@ public class Usuario {
      * @param puertoEnemigo the puerto enemigo
      */
     public void UsarCarta(int puertoEnemigo) {
-        System.out.printf("El usuario %s ha utilizado una carta de %s contra %s", nombre, manoCartas.getNodo(puertoEnemigo).getValor().getNombre(), enemigo.getNombre());
-        //cartaSeleccionada.UsarCarta(this, enemigo);
+        if (turno) {
+            System.out.printf("El usuario %s ha utilizado una carta de %s contra %s", nombre, manoCartas.getNodo(puertoEnemigo).getValor().getNombre(), enemigo.getNombre());
+            //cartaSeleccionada.UsarCarta(this, enemigo);
 
+<<<<<<< HEAD
+            manoCartas.usarCarta(posicionCartaSeleccinada, this, enemigo);
+            if (turno || !enemy) {
+                enviarSocket(puertoEnemigo);
+            }
+
+=======
         manoCartas.usarCarta(posicionCarataSeleccinada, this, enemigo);
         if (turno || !enemy) {
             enviarSocket(puertoEnemigo);
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
         }
     }
 
@@ -549,17 +639,29 @@ public class Usuario {
      *
      * @return the posicion carata seleccinada
      */
+<<<<<<< HEAD
+    public int getPosicionCartaSeleccinada() {
+        return posicionCartaSeleccinada;
+=======
     public int getPosicionCarataSeleccinada() {
         return posicionCarataSeleccinada;
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     }
 
     /**
      * Sets posicion carata seleccinada.
      *
+<<<<<<< HEAD
+     * @param posicionCartaSeleccinada the posicion carata seleccinada
+     */
+    public void setPosicionCartaSeleccinada(int posicionCartaSeleccinada) {
+        this.posicionCartaSeleccinada = posicionCartaSeleccinada;
+=======
      * @param posicionCarataSeleccinada the posicion carata seleccinada
      */
     public void setPosicionCarataSeleccinada(int posicionCarataSeleccinada) {
         this.posicionCarataSeleccinada = posicionCarataSeleccinada;
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
     }
 
     /**
@@ -615,4 +717,39 @@ public class Usuario {
     public void setEnemy(boolean enemy) {
         this.enemy = enemy;
     }
+<<<<<<< HEAD
+
+    public ArrayList<Integer> getNumeroDeCartas() {
+        return numeroDeCartas;
+    }
+
+    public void setNumeroDeCartas(ArrayList<Integer> numeroDeCartas) {
+        this.numeroDeCartas = numeroDeCartas;
+    }
+
+    public String getEnemigoIP() {
+        return enemigoIP;
+    }
+
+    public void setEnemigoIP(String enemigoIP) {
+        this.enemigoIP = enemigoIP;
+    }
+
+    public int getPosCartaEnemigoSeleccionada() {
+        return posCartaEnemigoSeleccionada;
+    }
+
+    public void setPosCartaEnemigoSeleccionada(int posCartaEnemigoSeleccionada) {
+        this.posCartaEnemigoSeleccionada = posCartaEnemigoSeleccionada;
+    }
+
+    public int getPuertoEnemigo() {
+        return puertoEnemigo;
+    }
+
+    public void setPuertoEnemigo(int puertoEnemigo) {
+        this.puertoEnemigo = puertoEnemigo;
+    }
+=======
+>>>>>>> dbe698bd061d136474904406b50333b21319a92c
 }
